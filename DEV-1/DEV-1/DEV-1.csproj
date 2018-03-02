@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A02584B-7D92-4F1F-B27C-CC23E8A7B626}</ProjectGuid>
+    <ProjectGuid>{BEFF65B8-0DD4-4C59-A9BD-EC3BAFD5010F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>DEV_1</RootNamespace>
     <AssemblyName>DEV-1</AssemblyName>
@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="MaxLengthSameStringFinder.cs" />
+    <Compile Include="MaxNumberOfTheSameConsecutiveSymbolsFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

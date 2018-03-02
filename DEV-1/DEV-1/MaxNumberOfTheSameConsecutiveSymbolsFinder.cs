@@ -13,7 +13,9 @@ namespace DevTask1
         /// <summary>
         /// Initializer of MaxNumberOfTheSameConsecutiveSymbolsFinder's instance
         /// </summary>
-        /// <param name="arg"></param>
+        /// <param name="arg">
+        /// string taken from the console args
+        /// </param>
         public MaxNumberOfTheSameConsecutiveSymbolsFinder(string arg)
         {
             processedString = arg;
