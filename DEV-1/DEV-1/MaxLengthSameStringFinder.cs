@@ -8,15 +8,17 @@ namespace DevTask1
     /// </summary>
     class MaxNumberOfTheSameConsecutiveSymbolsFinder
     {
-        string processedLine;
+        string processedString;
+
         /// <summary>
         /// Initializer of MaxNumberOfTheSameConsecutiveSymbolsFinder's instance
         /// </summary>
         /// <param name="arg"></param>
         public MaxNumberOfTheSameConsecutiveSymbolsFinder(string arg)
         {
-            processedLine = arg;
+            processedString = arg;
         }
+
         /// <summary>
         /// This metod calculates 
         /// max number of the same consecutive symbols
@@ -28,9 +30,9 @@ namespace DevTask1
         {
             int maxQuantityOfIdenticalSymbols = 0;
             int counterOfIdenticalSymbols = 1;
-            for (int i = 0; i < processedLine.Length - 1; i++)
+            for (int i = 0; i < processedString.Length - 1; i++)
             {
-                if (processedLine[i].Equals(processedLine[i + 1]))
+                if (processedString[i].Equals(processedString[i + 1]))
                 {
                     counterOfIdenticalSymbols++;
                     if (counterOfIdenticalSymbols > maxQuantityOfIdenticalSymbols)
