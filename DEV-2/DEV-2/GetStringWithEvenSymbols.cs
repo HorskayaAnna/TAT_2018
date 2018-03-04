@@ -7,7 +7,7 @@ namespace DevTask2
     /// This class contains method, which delete odd symbols 
     /// in string and output this string
     /// </summary>
-    class GetStringWithEvenSymbols
+    class GetterStringWithEvenSymbols
     {
         StringBuilder processedString;
 
@@ -17,7 +17,7 @@ namespace DevTask2
         /// <param name="arg">
         /// string taken from the console
         /// </param>
-        public GetStringWithEvenSymbols(StringBuilder arg)
+        public GetterStringWithEvenSymbols(StringBuilder arg)
         {
             processedString = arg;
         }
@@ -25,14 +25,25 @@ namespace DevTask2
         /// <summary>
         /// This metod create new string with only even index symbols
         /// </summary>
-        public void DeleteOddSymbols()
+        public void StringWithEvenSymbolsCreator()
         {
-            string bufferString = "";
-            for (int i = 0; i < processedString.Length; i+=2)
+            Console.WriteLine($"String with even symbols : {GetEvenPositionsStringBuilder()}");
+        }
+
+        /// <summary>
+        /// Makes stringBuilder from processedString even indexes
+        /// </summary>
+        /// <returns>
+        /// Returns stringBuilder with this even indexes chars
+        /// </returns>
+        public StringBuilder GetEvenPositionsStringBuilder()
+        {
+            StringBuilder outputStringBuilder = new StringBuilder();
+            for (int i = 0; i < processedString.Length; i += 2)
             {
-                bufferString += processedString[i];
+                outputStringBuilder.Append(processedString[i]);
             }
-            Console.WriteLine($"String with even symbols : {bufferString}");
+            return outputStringBuilder;
         }
     }
 }

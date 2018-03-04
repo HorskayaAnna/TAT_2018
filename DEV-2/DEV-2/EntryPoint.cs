@@ -11,8 +11,8 @@ namespace DevTask2
             StringBuilder inputString = new StringBuilder(Console.ReadLine());
             if (inputString.Length > 0)
             {
-                GetStringWithEvenSymbols delete = new GetStringWithEvenSymbols(inputString);
-                delete.DeleteOddSymbols();
+                GetterStringWithEvenSymbols evener = new GetterStringWithEvenSymbols(inputString);
+                evener.StringWithEvenSymbolsCreator();
             }
             else
             {
