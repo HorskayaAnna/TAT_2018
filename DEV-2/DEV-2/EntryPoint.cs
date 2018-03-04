@@ -14,7 +14,10 @@ namespace DevTask2
                 GetStringWithEvenSymbols delete = new GetStringWithEvenSymbols(inputString);
                 delete.DeleteOddSymbols();
             }
-            else Console.WriteLine("Error:Empty string");
+            else
+            {
+                Console.WriteLine("Error:Empty string");
+            }
         }
     }
 }
