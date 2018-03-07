@@ -3,55 +3,53 @@
 namespace DevTask3
 {
     /// <summary>
-    /// This class convert deciminal number 
+    /// This class convert decimal number 
     /// to another numeral system from 2 to 20 
     /// </summary>
-    class ConvertNumberToAnotherNumeralSystem
+    class ConvertingNumberToAnotherNumeralSystem
     {
         int numberToConvert;
         int radix;
 
         /// <summary>
-        /// Initializer of ConvertNumberToAnotherNumeralSystem's instance
+        /// Constructor of ConvertNumberToAnotherNumeralSystem's instance
         /// </summary>
         /// <param name="arg">
         /// numbers taken from the console args
         /// </param>
-        public ConvertNumberToAnotherNumeralSystem(int arg1, int arg2)
+        public ConvertingNumberToAnotherNumeralSystem(int paramDecimalNumber, int paramNewRadix)
         {
-            numberToConvert = arg1;
-            radix = arg2; 
-
+            numberToConvert = paramDecimalNumber;
+            radix = paramNewRadix;
         }
 
         /// <summary>
-        /// This metod convert deciminal
+        /// This metod convert decimal
         /// number to another numeral system
         /// </summary>
         /// <returns>
-        /// return number in anщther numeral system
+        /// return number in another numeral system
         /// </returns>
         public string СonversionToAnotherNumeralSystem()
         {
-
-            string result = ""; 
-            int temp;
-            int buffer=numberToConvert;
-            while (buffer > 0)  
+            string resultNumberInAnotherRadix= ""; 
+            int modulo;
+            int bufferDecimalNumber=numberToConvert;
+            while (bufferDecimalNumber > 0)  
             {
-                temp = buffer % radix;
-                if (temp < 9)
+                modulo = bufferDecimalNumber % radix;
+                if (modulo < 9)
                 {
-                    result += temp;
+                    resultNumberInAnotherRadix += modulo;
                 }
                 else
                 {
-                    char newRadixNum = (char)(65+temp-10);
-                    result += newRadixNum;
+                    char newRadixNum = (char)('A'+ modulo - 10);
+                    resultNumberInAnotherRadix += newRadixNum;
                 }
-                buffer = buffer / radix;
+                 bufferDecimalNumber = bufferDecimalNumber / radix;
             }
-            return (Reverse(result));
+            return (Reverse(resultNumberInAnotherRadix));
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace DevTask3
         /// string to revert, taken from the another method 
         /// </param>
         /// <returns>
-        /// return Transformed in reverse order  String
+        /// return Transformed in reverse order String
         /// </returns>
         private string Reverse(string stringToRevert)
         {

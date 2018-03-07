@@ -6,17 +6,32 @@ namespace DevTask3
     {
         static void Main(string[] args)
         {
-            if (args.Length != 2)
+            try
             {
-                Console.Write("Wrong number of arguments.\n");
-            }
-            else
-            {
-                if (Int32.Parse(args[1]) > 2 || Int32.Parse(args[1]) < 20)
+                int decimalNumber = Int32.Parse(args[0]);
+                if (decimalNumber < 0)
                 {
-                    ConvertNumberToAnotherNumeralSystem conventer = new ConvertNumberToAnotherNumeralSystem(Int32.Parse(args[0]), Int32.Parse(args[1]));
-                    Console.WriteLine($"Max value of sequent symbols is: {conventer.СonversionToAnotherNumeralSystem()}");
+                    throw new Exception("Can't convert negative numbers");
                 }
+                int newRadix = Int32.Parse(args[1]);
+                if (newRadix < 2 || newRadix > 20)
+                {
+                    throw new Exception("wrong Radix");
+                }
+                ConvertingNumberToAnotherNumeralSystem conventer = new ConvertingNumberToAnotherNumeralSystem(Int32.Parse(args[0]), Int32.Parse(args[1]));
+                Console.WriteLine($"Max value of sequent symbols is: {conventer.СonversionToAnotherNumeralSystem()}");
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("ERROR: Wrong number of arguments");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error:" + ex.Message);
             }
         }
     }
