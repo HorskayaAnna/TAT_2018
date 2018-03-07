@@ -19,8 +19,22 @@ namespace DevTask3
         /// </param>
         public ConvertingNumberToAnotherNumeralSystem(int paramDecimalNumber, int paramNewRadix)
         {
-            numberToConvert = paramDecimalNumber;
-            radix = paramNewRadix;
+            if (paramDecimalNumber < 0)
+            {
+                throw new System.ArgumentOutOfRangeException();
+            }
+            else
+            {
+                numberToConvert = paramDecimalNumber;
+            }
+            if (paramNewRadix < 2 || paramNewRadix > 20)
+            {
+                throw new System.ArgumentOutOfRangeException();
+            }
+            else
+            {
+                radix = paramNewRadix;
+            }
         }
 
         /// <summary>
