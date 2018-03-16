@@ -6,7 +6,7 @@ namespace DevTask3
     /// This class convert decimal number 
     /// to another numeral system from 2 to 20 
     /// </summary>
-    class ConvertingNumberToAnotherNumeralSystem
+    public class ConvertingNumberToAnotherNumeralSystem
     {
         int numberToConvert;
         int radix;
@@ -14,26 +14,33 @@ namespace DevTask3
         /// <summary>
         /// Constructor of ConvertNumberToAnotherNumeralSystem's instance
         /// </summary>
-        /// <param name="arg">
+        /// <param name="args">
         /// numbers taken from the console args
         /// </param>
-        public ConvertingNumberToAnotherNumeralSystem(int paramDecimalNumber, int paramNewRadix)
+        public ConvertingNumberToAnotherNumeralSystem(string[] args)
         {
-            if (paramDecimalNumber < 0)
+            try
             {
-                throw new System.ArgumentOutOfRangeException();
-            }
-            else
-            {
+                if (args.Length < 2)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                int paramDecimalNumber = int.Parse(args[0]);
+                if (paramDecimalNumber < 0)
+                {
+                    throw new System.ArgumentOutOfRangeException();
+                }
                 numberToConvert = paramDecimalNumber;
-            }
-            if (paramNewRadix < 2 || paramNewRadix > 20)
-            {
-                throw new System.ArgumentOutOfRangeException();
-            }
-            else
-            {
+                int paramNewRadix = int.Parse(args[1]);
+                if (paramNewRadix < 2 || paramNewRadix > 20)
+                {
+                    throw new System.ArgumentOutOfRangeException();
+                }
                 radix = paramNewRadix;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -44,12 +51,16 @@ namespace DevTask3
         /// <returns>
         /// return number in another numeral system
         /// </returns>
-        public string СonversionToAnotherNumeralSystem()
+        public string СonvertToAnotherNumeralSystem()
         {
-            string resultNumberInAnotherRadix= ""; 
+            string resultNumberInAnotherRadix = "";
             int modulo;
-            int bufferDecimalNumber=numberToConvert;
-            while (bufferDecimalNumber > 0)  
+            int bufferDecimalNumber = numberToConvert;
+            if (bufferDecimalNumber == 0)
+            {
+                return ("0");
+            }
+            while (bufferDecimalNumber > 0)
             {
                 modulo = bufferDecimalNumber % radix;
                 if (modulo < 9)
@@ -58,10 +69,10 @@ namespace DevTask3
                 }
                 else
                 {
-                    char newRadixNum = (char)('A'+ modulo - 10);
+                    char newRadixNum = (char)('A' + modulo - 10);
                     resultNumberInAnotherRadix += newRadixNum;
                 }
-                 bufferDecimalNumber = bufferDecimalNumber / radix;
+                bufferDecimalNumber = bufferDecimalNumber / radix;
             }
             return (Reverse(resultNumberInAnotherRadix));
         }

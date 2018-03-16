@@ -8,8 +8,8 @@ namespace DevTask3
         {
             try
             {
-                ConvertingNumberToAnotherNumeralSystem conventer = new ConvertingNumberToAnotherNumeralSystem(Int32.Parse(args[0]), Int32.Parse(args[1]));
-                Console.WriteLine($"Max value of sequent symbols is: {conventer.СonversionToAnotherNumeralSystem()}");
+                ConvertingNumberToAnotherNumeralSystem conventer = new ConvertingNumberToAnotherNumeralSystem(args);
+                Console.WriteLine($"Max value of sequent symbols is: {conventer.СonvertToAnotherNumeralSystem()}");
             }
             catch (FormatException ex)
             {
