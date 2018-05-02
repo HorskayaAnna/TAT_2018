@@ -4,6 +4,9 @@ using OpenQA.Selenium;
 
 namespace DEV_9
 {
+    /// <summary>
+    /// Class, which output first five friends 
+    /// </summary>
     class FirstFriends
     {
         IWebDriver driver;

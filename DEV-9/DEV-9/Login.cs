@@ -2,6 +2,9 @@
 
 namespace DEV_9
 {
+    /// <summary>
+    /// Class which autorizating in vk
+    /// </summary>
     class Login
     {
         IWebDriver driver;
