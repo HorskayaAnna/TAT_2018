@@ -13,13 +13,29 @@ namespace ServiceConsoleClient
     {
         public string GetDateFromConsole()
         {
-            Console.WriteLine("Input day");
-            int Day = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Month");
-            int Month = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("And year");
-            int Year = Int32.Parse(Console.ReadLine());
-            return $"{Year}.{Month}.{Day}";
+            try
+            {
+                int Day;
+                int Month;
+                int Year;
+                Console.WriteLine("Input day");
+                Int32.TryParse(Console.ReadLine(), out Day);
+                Console.WriteLine("Month");
+                Int32.TryParse(Console.ReadLine(), out Month);
+                Console.WriteLine("And year");
+                Int32.TryParse(Console.ReadLine(), out Year);
+                if (Day < 1 || Day > 31 || Month<1
+                    || Month >12 || Year <0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                return $"{Year}.{Month}.{Day}";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Data format is invalid");
+                throw ex;
+            }
         }
     }
 }
