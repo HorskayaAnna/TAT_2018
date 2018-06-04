@@ -1,22 +1,27 @@
-﻿using System.Threading;
-
+﻿using System;
 
 namespace DEV_9
 {
-    class Program
+    class EntryPoint
     {
         static void Main(string[] args)
         {
-            Login login = new Login();
-            login.LoginVk("375293694107", "fyyfujhcrfz778");
-          //  AreMyPage page = new AreMyPage();
-           // page.CheckMyPage();
-          //  FirstFriends friends = new FirstFriends();
-          //  friends.FirstFiveFriends();
-            SendMessage m = new SendMessage();
-            m.SendingMessage("Анна Горская", 70111692);
-            LogOut logOut = new LogOut();
-            logOut.LoginOut();
+            try
+            {
+                Pages.LoginPage login = new Pages.LoginPage();
+                login.Login("Login", "Password");
+                Pages.FriendsPage friends = new Pages.FriendsPage();
+                friends.OpenFriendPage("Friend name", "id");
+                friends.FirstFiveFriends();
+                Pages.MyPage myPage = new Pages.MyPage();
+                myPage.CheckMyPage("Hanna Horskaya");
+                Pages.LogOutPage logOut = new Pages.LogOutPage();
+                logOut.LogOut();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
