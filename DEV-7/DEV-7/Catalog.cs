@@ -1,29 +1,34 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace DEVTask7
 {
     /// <summary>
     /// class catalog for storing product and interacting with them 
     /// </summary>
-    class Catalog
+    public class Catalog
     {
         List<Product> products;
 
-        public Catalog()
+        public Catalog(string path)
         {
             products = new List<Product>();
-            LoadProductsToCatalog(GetCarsFromJson());
+            LoadProductsToCatalog(GetCarsFromJson(path));
+        }
+        public Catalog()
+        {
+            products = new List<Product>();         
         }
 
-        private Product[] GetCarsFromJson()
+        private Product[] GetCarsFromJson(string path)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto
             };
-            return JsonConvert.DeserializeObject<Product[]>(File.ReadAllText(@"cars.json"), settings);
+            return JsonConvert.DeserializeObject<Product[]>(File.ReadAllText(path), settings);
         }
 
         private void LoadProductsToCatalog(Product[] cars)
@@ -65,52 +70,15 @@ namespace DEVTask7
         /// </returns>
         public List<Product> GetSuitableProducts(Product paramProduct)
         {
-            List<Product> responseList = new List<Product>();
-            foreach (Product product in products)
-            {
-                if (product.GetType() == paramProduct.GetType() && AreSuitable(paramProduct, product))
-                {
-                    responseList.Add(product);
-                }
-            }
-            return responseList;
-        }
-
-        private bool AreSuitable(Product chosenProduct, Product product)
-        {
-            bool response = true;
-            if (chosenProduct.BodyType != string.Empty && product.BodyType != chosenProduct.BodyType)
-            {
-                response = false;
-            }
-            else if (chosenProduct.Brand != string.Empty && product.Brand != chosenProduct.Brand)
-            {
-                response = false;
-            }
-            else if (chosenProduct.ClimateControl != string.Empty && product.ClimateControl != chosenProduct.ClimateControl)
-            {
-                response = false;
-            }
-            else if (chosenProduct.EngineType != string.Empty && product.EngineType != chosenProduct.EngineType)
-            {
-                response = false;
-            }
-            else if (chosenProduct.Model != string.Empty && product.Model != chosenProduct.Model)
-            {
-                response = false;
-            }
-            else if (chosenProduct.SalonType != string.Empty && product.SalonType != chosenProduct.SalonType)
-            {
-                response = false;
-            }
-            else if (chosenProduct.Power != 0 && product.Power != chosenProduct.Power)
-            {
-                response = false;
-            }
-            else if (chosenProduct.Volume != 0 && product.Volume != chosenProduct.Volume)
-            {
-                response = false;
-            }
+            List<Product> response = new List<Product>();
+            if (paramProduct.BodyType != string.Empty) response = products.Where(t => t.BodyType == paramProduct.BodyType).ToList();
+            if (paramProduct.Brand != string.Empty) products.Where(t => t.Brand == paramProduct.Brand).ToList();
+            if (paramProduct.ClimateControl != string.Empty) products.Where(t => t.ClimateControl == paramProduct.ClimateControl).ToList();
+            if (paramProduct.EngineType != string.Empty) products.Where(t => t.EngineType == paramProduct.EngineType).ToList();
+            if (paramProduct.SalonType != string.Empty) products.Where(t => t.SalonType == paramProduct.SalonType).ToList();
+            if (paramProduct.Model != string.Empty) products.Where(t => t.Model == paramProduct.Model).ToList();
+            if (paramProduct.Volume != -1) products.Where(t => t.Volume == paramProduct.Volume).ToList();
+            if (paramProduct.Power != -1) products.Where(t => t.Power == paramProduct.Power).ToList();
             return response;
         }
 
