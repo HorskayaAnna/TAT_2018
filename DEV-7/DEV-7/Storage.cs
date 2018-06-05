@@ -7,17 +7,17 @@ namespace DEVTask7
     /// <summary>
     /// class storage for storing product and interacting with them 
     /// </summary>
-    class Storage
+    public class Storage
     {
         List<Product> products;
 
-        public Storage()
+        public Storage(string path)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             { 
                 TypeNameHandling = TypeNameHandling.Auto
             };
-            Product[] cars = JsonConvert.DeserializeObject<Product[]>(File.ReadAllText(@"storage.json"), settings);
+            Product[] cars = JsonConvert.DeserializeObject<Product[]>(File.ReadAllText(path), settings);
             products = new List<Product>();
             foreach (Product car in cars)
             {

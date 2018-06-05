@@ -7,7 +7,7 @@ namespace DEVTask7
     /// Class lada extends product class
     /// </summary>
     [JsonObject]
-    class Lada : Product
+    public class Lada : Product
     {
         public Lada()
         {
