@@ -7,7 +7,7 @@ namespace DevTask2
     /// This class contains method, which delete odd symbols 
     /// in string and output this string
     /// </summary>
-    class GetterStringWithEvenSymbols
+    public class GetterStringWithEvenSymbols
     {
         StringBuilder processedString;
 

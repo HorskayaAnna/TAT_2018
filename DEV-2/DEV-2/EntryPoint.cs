@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DevTask2
 {
-    class EntryPoint
+    public class EntryPoint
     {
         static void Main(string[] args)
         {
